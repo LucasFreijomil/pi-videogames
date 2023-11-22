@@ -8,7 +8,6 @@ const Landing = () => {
         <p>GET STARTED</p>
       </Link>
     </div>
-    
   );
 };
 

@@ -1,0 +1,30 @@
+.navBar {
+    background-color: #333333;
+    color: #EAEEEF;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid #00ffff;
+}
+
+.gamepad2_logo{
+    margin-top: 5px;
+    height: 110px;
+}
+
+.navButton {
+    height: 40px;
+    width: 180px;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em;
+    background-color: #ff220000;
+    border: 1px solid transparent;
+    transition: border-bottom 0.35s, color 0.35s;
+}
+
+.navButton:hover {
+    border-bottom: 1px solid #ffffff;
+}
