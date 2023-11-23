@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Styles from "../NavBar/NavBar.module.css";
-import gamepad2_logo from "../../assets/gamepad2_logo.png"
+import gamepad2_logo from "../../assets/gamepad2_logo.png";
 
 const NavBar = () => {
   return (
