@@ -1,7 +1,7 @@
 import Styles from "./Home.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGames, getAllGenres, apiDbFilter, genresFilter, orderAlfabetic } from "../../redux/actions";
+import { getAllGames, getAllGenres, apiDbFilter, genresFilter, orderAlfabetic, orderRating } from "../../redux/actions";
 import GameCard from "../../components/GameCard/GameCard";
 
 const Home = () => {
@@ -19,12 +19,16 @@ const Home = () => {
   };
 
   const handleGender = (event) => {
-    dispatch(genresFilter(event.target.value))
-  }
+    dispatch(genresFilter(event.target.value));
+  };
 
   const handleAlfabeticOrder = (event) => {
-    dispatch(orderAlfabetic(event.target.value))
-  }
+    dispatch(orderAlfabetic(event.target.value));
+  };
+
+  const handleRatingOrder = (event) => {
+    dispatch(orderRating(event.target.value));
+  };
 
   return (
     <div>
@@ -36,15 +40,17 @@ const Home = () => {
         </select>
 
         <select name="" id="" onChange={handleApiDb}>
-          <option value="default" >Show All (API/DB)</option>
+          <option value="default">Show All (API/DB)</option>
           <option value="api">API</option>
           <option value="db">DB</option>
         </select>
       </div>
 
       <div className={Styles.filters}>
-        <select name="" id="">
-          <option value="">Order Rating (default)</option>
+        <select name="" id="" onChange={handleRatingOrder}>
+          <option value="default">Order Rating (default)</option>
+          <option value="asc">Highest First</option>
+          <option value="desc">Lowest First</option>
         </select>
 
         <select name="" id="" onChange={handleGender}>
