@@ -1,7 +1,7 @@
 import { TYPES } from "./action-types";
 import axios from "axios";
 
-const { GET_GAMES, GET_GAME_ID, GET_GENRES, FILTER_API_DB, FILTER_GENRES } = TYPES;
+const { GET_GAMES, GET_GAME_ID, GET_GENRES, FILTER_API_DB, FILTER_GENRES, ORDER_ALFABETIC } = TYPES;
 
 export const getAllGames = () => {
   return async (dispatch) => {
@@ -64,3 +64,10 @@ export const genresFilter = (filter) => {
     payload: filter
   }
 }
+
+export const orderAlfabetic = (order) => {
+  return {
+    type: ORDER_ALFABETIC,
+    payload: order,
+  };
+};

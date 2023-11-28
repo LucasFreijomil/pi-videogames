@@ -1,5 +1,5 @@
 import { TYPES } from "./action-types";
-const { GET_GAMES, GET_GAME_ID, GET_GENRES, FILTER_API_DB, FILTER_GENRES } = TYPES;
+const { GET_GAMES, GET_GAME_ID, GET_GENRES, FILTER_API_DB, FILTER_GENRES, ORDER_ALFABETIC } = TYPES;
 
 const initialState = {
   games: [],
@@ -68,6 +68,16 @@ const gamesReducer = (state = initialState, action) => {
         ...state,
         games: backupCopy
       };
+
+    case ORDER_ALFABETIC:  
+      const gamesCopy = [...state.games];
+      const gamesBackupCopy = [...state.gamesBackup];
+      return {
+        ...state,
+        games: action.payload === "asc" ? 
+        gamesCopy.sort((a, b) => a.name.localeCompare(b.name)) : action.payload === "desc" ?
+        gamesCopy.sort((a, b) => b.name.localeCompare(a.name)) : gamesBackupCopy
+      }
 
     default:
       return { ...state };

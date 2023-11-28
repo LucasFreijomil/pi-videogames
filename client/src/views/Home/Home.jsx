@@ -1,7 +1,7 @@
 import Styles from "./Home.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGames, getAllGenres, apiDbFilter, genresFilter } from "../../redux/actions";
+import { getAllGames, getAllGenres, apiDbFilter, genresFilter, orderAlfabetic } from "../../redux/actions";
 import GameCard from "../../components/GameCard/GameCard";
 
 const Home = () => {
@@ -22,11 +22,17 @@ const Home = () => {
     dispatch(genresFilter(event.target.value))
   }
 
+  const handleAlfabeticOrder = (event) => {
+    dispatch(orderAlfabetic(event.target.value))
+  }
+
   return (
     <div>
       <div className={Styles.filters}>
-        <select name="" id="">
-          <option value="">Sort By Name (default)</option>
+        <select name="" id="" onChange={handleAlfabeticOrder}>
+          <option value="default">Sort By Name (default)</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
 
         <select name="" id="" onChange={handleApiDb}>
@@ -38,11 +44,11 @@ const Home = () => {
 
       <div className={Styles.filters}>
         <select name="" id="">
-          <option value="">Release</option>
+          <option value="">Order Rating (default)</option>
         </select>
 
         <select name="" id="" onChange={handleGender}>
-          <option value="default">Genres</option>
+          <option value="default">All Genres</option>
           {genres.map((genre, index) => (
             <option key={index} value={genre.name}>
               {genre.name}
