@@ -31,7 +31,7 @@ const Detail = () => {
         <h2>Released: {game.released}</h2>
         <h2>Genres: {game.genres?.map((genre) => genre.name)}</h2>
 
-        <p>Description: {game.description}</p>
+        <p>{game.description_raw}</p>
       </>
     ) : (
       <h3>Loading...</h3>

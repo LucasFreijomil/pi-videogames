@@ -1,5 +1,5 @@
 .navBar {
-    background-color: #333333;
+    background-color: #121212;
     color: #EAEEEF;
     height: 55px;
     display: flex;
@@ -28,4 +28,13 @@
 
 .navButton:hover {
     border-bottom: 1px solid #ffffff;
+}
+
+.searchBar{
+    height: 30px;
+    width: 300px;
+    background-color: #00dbdb00;
+    border: transparent;
+    border-bottom: 1px solid white;
+    color: #ffffff;
 }

@@ -7,3 +7,19 @@
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.filters select {
+    width: 180px;
+    height: 30px;
+    background-color: rgba(73, 73, 73, 0);
+    border: transparent;
+    border-bottom: 1px solid #00dbdb;
+    color: white;
+}

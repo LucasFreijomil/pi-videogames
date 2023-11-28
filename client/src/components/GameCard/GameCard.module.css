@@ -3,12 +3,12 @@
     width: 300px;
     height: 400px;
     background: #1a1a1a;
-    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
+    border: 1px solid #515151;
   }
   
   .card:hover {
