@@ -7,7 +7,7 @@ import GameCard from "../../components/GameCard/GameCard";
 const Home = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
-  const genres = useSelector((state) => state.genres);
+  const genres = useSelector((state) => state.genres.sort((a, b) => a.name.localeCompare(b.name)));
 
   useEffect(() => {
     dispatch(getAllGames());
