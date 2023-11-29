@@ -21,12 +21,14 @@ const gamesReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedGame: action.payload,
+        
       };
      
     case GET_GAME_NAME:
       return {
         ...state,
         games: action.payload,
+        gamesBackup: action.payload,
       };
 
     case GET_GENRES:
