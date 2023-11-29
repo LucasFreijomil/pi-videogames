@@ -1,5 +1,5 @@
 import { TYPES } from "./action-types";
-const { GET_GAMES, GET_GAME_ID, GET_GENRES, FILTER_API_DB, FILTER_GENRES, ORDER_ALFABETIC, ORDER_RATING } = TYPES;
+const { GET_GAMES, GET_GAME_ID, GET_GAME_NAME, GET_GENRES, FILTER_API_DB, FILTER_GENRES, ORDER_ALFABETIC, ORDER_RATING } = TYPES;
 
 const initialState = {
   games: [],
@@ -21,6 +21,12 @@ const gamesReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedGame: action.payload,
+      };
+     
+    case GET_GAME_NAME:
+      return {
+        ...state,
+        games: action.payload,
       };
 
     case GET_GENRES:
