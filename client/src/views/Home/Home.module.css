@@ -1,0 +1,50 @@
+.CardList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center; /* Centra las columnas horizontalmente */
+    margin: 30px auto; /* Ajustar el margen para centrar en el contenedor */
+    max-width: 1000px;
+  }
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.filters select {
+    width: 180px;
+    height: 30px;
+    background-color: rgba(73, 73, 73, 0);
+    border: transparent;
+    border-bottom: 1px solid #00dbdb;
+    color: white;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ }
+ 
+ .pagination h1 {
+     color: #EAEEEF;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     font-size: 1.5em;
+ }
+ 
+ .paginButtons {
+     color: #EAEEEF;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     font-size: 1.5em;
+     background-color: #e6260000;
+     border-radius: 20px;
+     border: 1px solid transparent;
+     transition: color 0.35s;
+     padding: 20px;
+ }
+ 
+ .paginButtons:hover {
+     color: #ff2400;
+ }
