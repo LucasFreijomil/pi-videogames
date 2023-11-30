@@ -1,14 +1,23 @@
 import { TYPES } from "./action-types";
 import axios from "axios";
 
-const { GET_GAMES, GET_GAME_ID, GET_GAME_NAME, GET_GENRES, FILTER_API_DB, FILTER_GENRES, ORDER_ALFABETIC, ORDER_RATING } = TYPES;
+const {
+  GET_GAMES,
+  GET_GAME_ID,
+  GET_GAME_NAME,
+  GET_GENRES,
+  FILTER_API_DB,
+  FILTER_GENRES,
+  ORDER_ALFABETIC,
+  ORDER_RATING,
+} = TYPES;
+
+var URL = `https://api.rawg.io/api/games?key=61678cf233004c44998e60ade3390be6&page_size=40`;
 
 export const getAllGames = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        `https://api.rawg.io/api/games?key=61678cf233004c44998e60ade3390be6&page_size=15`
-      );
+      const { data } = await axios(URL);
       return dispatch({
         type: GET_GAMES,
         payload: data.results,
@@ -20,11 +29,10 @@ export const getAllGames = () => {
 };
 
 export const getGameByName = (name) => {
-  
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `https://api.rawg.io/api/games?search=${name}&key=61678cf233004c44998e60ade3390be6&page_size=15`
+        `https://api.rawg.io/api/games?search=${name}&key=61678cf233004c44998e60ade3390be6&page_size=40`
       );
       return dispatch({
         type: GET_GAME_NAME,
@@ -34,7 +42,7 @@ export const getGameByName = (name) => {
       console.log(error);
     }
   };
-}
+};
 
 export const getGameId = (id) => {
   return async (dispatch) => {
@@ -50,7 +58,7 @@ export const getGameId = (id) => {
       console.log(error);
     }
   };
-}
+};
 
 export const getAllGenres = () => {
   return async (dispatch) => {
@@ -66,21 +74,21 @@ export const getAllGenres = () => {
       console.log(error);
     }
   };
-}
+};
 
 export const apiDbFilter = (filter) => {
   return {
     type: FILTER_API_DB,
-    payload: filter
-  }
-}
+    payload: filter,
+  };
+};
 
 export const genresFilter = (filter) => {
   return {
     type: FILTER_GENRES,
-    payload: filter
-  }
-}
+    payload: filter,
+  };
+};
 
 export const orderAlfabetic = (order) => {
   return {

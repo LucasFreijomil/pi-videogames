@@ -1,34 +1,26 @@
 import Styles from "./Home.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGames, getAllGenres, apiDbFilter, genresFilter, orderAlfabetic, orderRating } from "../../redux/actions";
+import { getAllGames, getAllGenres } from "../../redux/actions";
 import GameCard from "../../components/GameCard/GameCard";
+import Pagination from "../../components/Pagination/Pagination";
+import usePagination from "../../customHooks/usePagination";
+import useFilterHandlers from "../../customHooks/useFilterHandlers";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.games);
-  const genres = useSelector((state) => state.genres.sort((a, b) => a.name.localeCompare(b.name)));
+  const genres = useSelector((state) =>
+    state.genres.sort((a, b) => a.name.localeCompare(b.name))
+  );
+  
+  const { gamesArray, nextHandler, prevHandler, count } = usePagination();
+  const { handleApiDb, handleGender, handleAlfabeticOrder, handleRatingOrder } =
+    useFilterHandlers();
 
   useEffect(() => {
     dispatch(getAllGames());
     dispatch(getAllGenres());
   }, []);
-
-  const handleApiDb = (event) => {
-    dispatch(apiDbFilter(event.target.value));
-  };
-
-  const handleGender = (event) => {
-    dispatch(genresFilter(event.target.value));
-  };
-
-  const handleAlfabeticOrder = (event) => {
-    dispatch(orderAlfabetic(event.target.value));
-  };
-
-  const handleRatingOrder = (event) => {
-    dispatch(orderRating(event.target.value));
-  };
 
   return (
     <div>
@@ -64,7 +56,7 @@ const Home = () => {
       </div>
 
       <div className={Styles.CardList}>
-        {games.map((game) => (
+        {gamesArray.map((game) => (
           <GameCard
             key={game.id}
             id={game.id}
@@ -74,6 +66,11 @@ const Home = () => {
           />
         ))}
       </div>
+      <Pagination
+        nextHandler={nextHandler}
+        prevHandler={prevHandler}
+        count={count}
+      />
     </div>
   );
 };
