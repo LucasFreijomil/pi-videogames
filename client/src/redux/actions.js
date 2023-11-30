@@ -12,12 +12,10 @@ const {
   ORDER_RATING,
 } = TYPES;
 
-var URL = `https://api.rawg.io/api/games?key=61678cf233004c44998e60ade3390be6&page_size=40`;
-
 export const getAllGames = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(URL);
+      const { data } = await axios(`https://api.rawg.io/api/games?key=61678cf233004c44998e60ade3390be6&page_size=40`);
       return dispatch({
         type: GET_GAMES,
         payload: data.results,
