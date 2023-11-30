@@ -1,12 +1,10 @@
 .CardList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
-    justify-items: center;
-    margin: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center; /* Centra las columnas horizontalmente */
+    margin: 30px auto; /* Ajustar el margen para centrar en el contenedor */
     max-width: 1000px;
-    margin: 0 auto;
-}
+  }
 
 .filters{
     display: flex;

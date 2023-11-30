@@ -1,7 +1,7 @@
 .card {
     margin: 20px;
-    width: 300px;
-    height: 400px;
+    width: 220px;
+    height: 300px;
     background: #1a1a1a;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -9,6 +9,18 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #515151;
+  }
+
+  .card h3{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    
+  }
+
+  .card h4 {
+    display: flex;
+    justify-content: center;
   }
   
   .card:hover {
@@ -19,10 +31,6 @@
     height: 60%;
     object-fit: cover;
     border-bottom: 2px solid #ff2400;
-  }
-  
-  .cardContent {
-    padding: 20px;
   }
   
   .link {
