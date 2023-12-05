@@ -48,3 +48,17 @@
  .paginButtons:hover {
      color: #ff2400;
  }
+
+ .loading {
+    color: #EAEEEF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Alinea el contenido al centro horizontalmente */
+    height: 100vh; /* Haz que el bloque ocupe toda la altura de la pantalla */
+}
+
+.loading h1 {
+    font-size: 3em; /* Tamaño de fuente más grande */
+    margin-bottom: 20px; /* Espacio inferior para separar del resto del contenido */
+}

@@ -37,7 +37,7 @@ const Create = () => {
     <div className={Styles.form}>
       <form onSubmit={handleFormSubmit}>
         <h2>Name</h2>
-        <input type="text" name="name" onChange={handleInputChange} />
+        <input type="text" name="name" onChange={handleInputChange} autoComplete="off" />
         {errors.name && <span>{errors.name}</span>}
         <br />
 
@@ -72,8 +72,10 @@ const Create = () => {
           <input
             type="text"
             name="platforms"
+            autoComplete="off"
             value={platformInput}
-            onChange={(e) => setPlatformInput(e.target.value)}
+            onChange={(e) => setPlatformInput(e.target.value)
+            }
           />
           <br />
           <br />
@@ -98,11 +100,11 @@ const Create = () => {
         <br />
 
         <h2>Description</h2>
-        <input type="text" name="description" onChange={handleInputChange} />
+        <input type="text" name="description" onChange={handleInputChange} autoComplete="off"/>
         <br />
 
         <h2>Image</h2>
-        <input type="text" name="image" onChange={handleInputChange} />
+        <input type="text" name="image" onChange={handleInputChange} autoComplete="off"/>
         {errors.image && <span>{errors.image}</span>}
         <br />
 
@@ -113,6 +115,7 @@ const Create = () => {
           name="released"
           value={releaseDate}
           onChange={handleReleaseDateChange}
+          autoComplete="off"
         />
         <br />
 

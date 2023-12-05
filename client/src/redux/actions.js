@@ -30,7 +30,7 @@ export const getGameByName = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `http://localhost:3001/name/${name}`
+        `http://localhost:3001/videogames/name/${name}`
       );
       return dispatch({
         type: GET_GAME_NAME,

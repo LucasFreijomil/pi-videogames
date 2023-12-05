@@ -21,7 +21,7 @@ const NavBar = () => {
 
   return (
     <div className={Styles.navBar}>
-      <Link to={"/home"}>
+      <Link to={"/home"} onClick={() => dispatch(getAllGames())}>
         <img
           src={gamepad2_logo}
           alt="gamepad"

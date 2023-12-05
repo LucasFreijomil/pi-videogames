@@ -38,7 +38,7 @@ const getVideogameById = async (req, res) => {
         const responseObject = {
           id: apiGame.id,
           name: apiGame.name,
-          description: apiGame.description,
+          description: apiGame.description_raw,
           platforms: apiGame.platforms.map(
             (platform) => platform.platform.name
           ),

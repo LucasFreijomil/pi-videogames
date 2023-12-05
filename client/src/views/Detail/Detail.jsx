@@ -15,7 +15,7 @@ const Detail = () => {
 
   return (
     <div className={Styles.detail}>
-    {game ? (
+    {game.name ? (
       <>
         <h1>
           {game.name}
@@ -27,10 +27,10 @@ const Detail = () => {
         />
 
         <h2>ID: {game.id}</h2>
-        <h2>Platforms: {game.platforms?.map((platform) => platform)}</h2>
+        <h2>Platforms: {game.platforms?.map((platform) => platform).join(", ")}</h2>
         <h2>Released: {game.released}</h2>
-        <h2>Genres: {game.genres?.map((genre) => genre)}</h2>
-
+        <h2>Genres: {game.genres?.map((genre) => genre).join(", ")}</h2>
+        <h2>Rated: {game.rating}</h2>
         <p>{game.description}</p>
       </>
     ) : (

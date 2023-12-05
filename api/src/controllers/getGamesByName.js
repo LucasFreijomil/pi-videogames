@@ -38,7 +38,7 @@ const getGamesByName = async (req, res) => {
       })),
       ...apiGames.map((apiGame) => ({
         id: apiGame.id,
-        nombre: apiGame.name,
+        name: apiGame.name,
         description: apiGame.description,
         platforms: apiGame.platforms.map((platform) => platform.platform.name),
         image: apiGame.background_image,
