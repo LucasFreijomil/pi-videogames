@@ -26,6 +26,7 @@ const Create = () => {
     handleRatingChange,
     setPlatformInput,
     handleFormSubmit,
+    errors
   } = useCreateHandlers();
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const Create = () => {
       <form onSubmit={handleFormSubmit}>
         <h2>Name</h2>
         <input type="text" name="name" onChange={handleInputChange} />
+        {errors.name && <span>{errors.name}</span>}
         <br />
 
         <h2>Genres</h2>
@@ -101,6 +103,7 @@ const Create = () => {
 
         <h2>Image</h2>
         <input type="text" name="image" onChange={handleInputChange} />
+        {errors.image && <span>{errors.image}</span>}
         <br />
 
         <h2>Released</h2>

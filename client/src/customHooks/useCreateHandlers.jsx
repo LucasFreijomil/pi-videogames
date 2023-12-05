@@ -1,25 +1,42 @@
 import { useState } from "react";
 import axios from "axios";
+import validateCreateForm from "../validateCreateForm";
 
 const useCreateHandlers = () => {
   const [rating, setRating] = useState("");
+
   const handleRatingChange = (event) => {
     setRating(event.target.value);
   };
-  //FORM HANDLER
+
   const [form, setForm] = useState({
     name: "",
     image: "",
     description: "",
   });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    image: "",
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
+    const newErrors = validateCreateForm({ ...form, [name]: value });
+    setErrors({ ...errors, ...newErrors });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Estado actual del formulario:", form, platforms,releaseDate, rating,selectedGenres.genres);
+    console.log(
+      "Estado actual del formulario:",
+      form,
+      platforms,
+      releaseDate,
+      rating,
+      selectedGenres.genres
+    );
     if (
       !form.name ||
       selectedGenres.genres.length === 0 ||
@@ -29,7 +46,7 @@ const useCreateHandlers = () => {
       !releaseDate ||
       !rating
     ) {
-      alert("Por favor, completa todos los campos del formulario");
+      alert("Please complete all fields in this form.");
       return;
     } else {
       const completeForm = {
@@ -53,10 +70,11 @@ const useCreateHandlers = () => {
       }
     }
   };
-  //GENRE HANDLER
+
   const [selectedGenres, setSelectedGenres] = useState({
     genres: [],
   });
+
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
     if (selectedGenre && !selectedGenres.genres.includes(selectedGenre)) {
@@ -65,6 +83,7 @@ const useCreateHandlers = () => {
       });
     }
   };
+
   const handleRemoveGenre = (genreToRemove) => {
     const updatedGenres = selectedGenres.genres.filter(
       (genre) => genre !== genreToRemove
@@ -73,20 +92,24 @@ const useCreateHandlers = () => {
       genres: updatedGenres,
     });
   };
-  //RELEASED HANDLER
+
   const [releaseDate, setReleaseDate] = useState("");
+
   const handleReleaseDateChange = (event) => {
     setReleaseDate(event.target.value);
   };
-  //PLATFORM HANDLER
+
   const [platformInput, setPlatformInput] = useState("");
+
   const [platforms, setPlatforms] = useState([]);
+
   const handleAddPlatform = () => {
     if (platformInput.trim() !== "" && !platforms.includes(platformInput)) {
       setPlatforms([...platforms, platformInput]);
       setPlatformInput("");
     }
   };
+
   const handleRemovePlatform = (platformToRemove) => {
     const updatedPlatforms = platforms.filter(
       (platform) => platform !== platformToRemove
@@ -110,6 +133,7 @@ const useCreateHandlers = () => {
     handleRemovePlatform,
     handleRatingChange,
     setPlatformInput,
+    errors
   };
 };
 
