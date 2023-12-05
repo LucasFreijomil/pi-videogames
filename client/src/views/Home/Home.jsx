@@ -61,8 +61,8 @@ const Home = () => {
             key={game.id}
             id={game.id}
             name={game.name}
-            background_image={game.background_image}
-            genres={game.genres.map((genre) => genre.name)}
+            background_image={game.image}
+            genres={game.genres.map((genre) => genre)}
           />
         ))}
       </div>

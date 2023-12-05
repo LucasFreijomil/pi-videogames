@@ -22,16 +22,16 @@ const Detail = () => {
         </h1>
         <img
           className={Styles.detailImage}
-          src={game.background_image}
+          src={game.image}
           alt="img"
         />
 
         <h2>ID: {game.id}</h2>
-        <h2>Platforms: {game.platforms?.map((platform) => platform.platform.name)}</h2>
+        <h2>Platforms: {game.platforms?.map((platform) => platform)}</h2>
         <h2>Released: {game.released}</h2>
-        <h2>Genres: {game.genres?.map((genre) => genre.name)}</h2>
+        <h2>Genres: {game.genres?.map((genre) => genre)}</h2>
 
-        <p>{game.description_raw}</p>
+        <p>{game.description}</p>
       </>
     ) : (
       <h3>Loading...</h3>
@@ -41,12 +41,4 @@ const Detail = () => {
 };
 
 export default Detail;
-
-// ID.
-// Nombre.
-// Imagen.
-// Plataformas.
-// Descripción.
-// Fecha de lanzamiento.
 // Rating.
-// Géneros.

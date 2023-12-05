@@ -32,17 +32,17 @@ const getVideogameById = async (req, res) => {
       const apiResponse = await axios.get(
         URL + `${idVideogame}` + `?key=` + API_KEY
       );
-      const apiGame = apiResponse.data;
+      const apiGame = apiResponse?.data;
 
       if (apiGame) {
         const responseObject = {
           id: apiGame.id,
           name: apiGame.name,
-          descripcion: apiGame.description,
+          description: apiGame.description,
           platforms: apiGame.platforms.map(
             (platform) => platform.platform.name
           ),
-          background_image: apiGame.background_image,
+          image: apiGame.background_image,
           released: apiGame.released,
           rating: apiGame.rating,
           genres: apiGame.genres.map((genre) => genre.name),

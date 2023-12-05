@@ -7,12 +7,12 @@ const getAllGames = async (req, res) => {
   try {
     const apiResponse = (
       await axios.get(`${URL}?page_size=40&page=1&key=${API_KEY}`)
-    ).data.results;
+    );
     const dbGames = await Videogame.findAll({
       include: Genres,
     });
 
-    const apiGames = [...apiResponse].map((game) => ({
+    const apiGames = [...apiResponse.data.results].map((game) => ({
       id: game.id,
       name: game.name,
       description: game.description,
