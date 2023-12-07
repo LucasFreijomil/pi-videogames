@@ -16,7 +16,6 @@ const NavBar = () => {
 
   const handleInputChange = (event) => {
     setSearchedGame(event.target.value);
-    setShowAlert(false);
   };
 
   const handleSearchClick = async () => {
@@ -25,10 +24,8 @@ const NavBar = () => {
       const { data } = await axios(
         `http://localhost:3001/videogames/name/${searchedGame}`
       );
-
       if (!data.length) {
         setShowAlert(true);
-
         setTimeout(() => {
           setShowAlert(false);
         }, 100);
