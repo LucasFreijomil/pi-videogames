@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { apiDbFilter, genresFilter, orderAlfabetic, orderRating } from "../redux/actions";
 
 const useFilterHandlers = () => {
   const dispatch = useDispatch();
+
+
 
   const handleApiDb = (event) => {
     dispatch(apiDbFilter(event.target.value));
@@ -10,16 +13,17 @@ const useFilterHandlers = () => {
 
   const handleGender = (event) => {
     dispatch(genresFilter(event.target.value));
+
   };
 
-  const handleAlfabeticOrder = (event) => {
-    dispatch(orderAlfabetic(event.target.value));
-  };
-
-  const handleRatingOrder = (event) => {
-    dispatch(orderRating(event.target.value));
-  };
-  return { handleApiDb, handleGender, handleAlfabeticOrder, handleRatingOrder };
+  const handleAlfabeticAndRating = (event) => {
+    if (event.target.value === "AZ" || event.target.value === "ZA"){
+      dispatch(orderAlfabetic(event.target.value))
+    } else {
+      dispatch(orderRating(event.target.value));
+    }
+  }
+  return { handleApiDb, handleGender, handleAlfabeticAndRating };
 };
 
 export default useFilterHandlers;

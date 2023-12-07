@@ -4,10 +4,10 @@ const nameValidation = (data) => {
     if (namePattern.test(data)) {
       return "";
     } else {
-      return "El nombre solo puede contener letras y números";
+      return "The name can only contain letters and numbers";
     }
   } else {
-    return "El nombre no puede estar vacío";
+    return "Name cannot be empty";
   }
 };
 
@@ -24,7 +24,7 @@ const imageValidation = (url) => {
   if (url.trim() !== "" && pattern.test(url)) {
     return "";
   } else {
-    return "La URL de la imagen no es válida";
+    return "Invalid URL format";
   }
 };
 

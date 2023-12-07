@@ -10,6 +10,7 @@ const {
   FILTER_GENRES,
   ORDER_ALFABETIC,
   ORDER_RATING,
+  EMPTY_SELECTED_GAME
 } = TYPES;
 
 export const getAllGames = () => {
@@ -101,3 +102,11 @@ export const orderRating = (order) => {
     payload: order,
   };
 };
+
+export const emptySelectedGame = () => {
+  return {
+    type: EMPTY_SELECTED_GAME,
+    payload: []
+  }
+}
+

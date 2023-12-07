@@ -9,7 +9,7 @@ const GameCard = ({ id, name, background_image, genres }) => {
           <h3>{name}</h3>
           <img className={Styles.cardImage} src={background_image} alt={name} />
           <br />
-          <h4>{genres}</h4>
+          <p>{genres.map((genre) => genre).join(", ")}</p>
         </div>
       </div>
     );

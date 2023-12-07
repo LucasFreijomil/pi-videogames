@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGenres } from "../../redux/actions";
 import { useEffect } from "react";
 import useCreateHandlers from "../../customHooks/useCreateHandlers";
+import { MdAdd } from "react-icons/md";
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,8 @@ const Create = () => {
     <div className={Styles.form}>
       <form onSubmit={handleFormSubmit}>
         <h2>Name</h2>
-        <input type="text" name="name" onChange={handleInputChange} autoComplete="off" />
-        {errors.name && <span>{errors.name}</span>}
-        <br />
+        <input type="text" name="name" placeholder="Type the game name..." onChange={handleInputChange} autoComplete="off" />
+        <p>{errors.name && <span>{errors.name}</span>}</p>
 
         <h2>Genres</h2>
         <select name="genres" onChange={handleGenreSelect}>
@@ -68,19 +68,18 @@ const Create = () => {
         </div>
 
         <h2>Platforms</h2>
-        <div>
+        <div >
           <input
             type="text"
             name="platforms"
             autoComplete="off"
             value={platformInput}
+            placeholder="Add one or more..."
             onChange={(e) => setPlatformInput(e.target.value)
             }
           />
-          <br />
-          <br />
-          <button type="button" onClick={handleAddPlatform}>
-            Add Platform
+          <button type="button" className={Styles.addPlatformButton} onClick={handleAddPlatform}>
+          <MdAdd />
           </button>
         </div>
         <br />
@@ -97,16 +96,14 @@ const Create = () => {
             </div>
           ))}
         </div>
-        <br />
 
         <h2>Description</h2>
-        <input type="text" name="description" onChange={handleInputChange} autoComplete="off"/>
+        <input type="text" name="description" placeholder="Type a description..." onChange={handleInputChange} autoComplete="off"/>
         <br />
 
         <h2>Image</h2>
-        <input type="text" name="image" onChange={handleInputChange} autoComplete="off"/>
-        {errors.image && <span>{errors.image}</span>}
-        <br />
+        <input type="text" name="image" placeholder="Insert URL..." onChange={handleInputChange} autoComplete="off"/>
+        <p>{errors.image && <span>{errors.image}</span>}</p>
 
         <h2>Released</h2>
         <input
@@ -129,9 +126,7 @@ const Create = () => {
           <option value="1">1 (Skip)</option>
         </select>
         <br />
-        <br />
-        <br />
-        <button className={Styles.createButton}>Create</button>
+        <button className={Styles.createButton}>Create Game</button>
       </form>
     </div>
   );

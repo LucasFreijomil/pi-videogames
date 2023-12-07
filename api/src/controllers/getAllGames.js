@@ -5,14 +5,23 @@ const API_KEY = process.env.DB_API_KEY;
 
 const getAllGames = async (req, res) => {
   try {
-    const apiResponse = (
-      await axios.get(`${URL}?page_size=40&page=1&key=${API_KEY}`)
+    const apiResponse1 = (
+      await axios.get(`${URL}?page_size=25&page=1&key=${API_KEY}`)
+    );
+    const apiResponse2 = (
+      await axios.get(`${URL}?page_size=25&page=2&key=${API_KEY}`)
+    );
+    const apiResponse3 = (
+      await axios.get(`${URL}?page_size=25&page=3&key=${API_KEY}`)
+    );
+    const apiResponse4 = (
+      await axios.get(`${URL}?page_size=25&page=4&key=${API_KEY}`)
     );
     const dbGames = await Videogame.findAll({
       include: Genres,
     });
 
-    const apiGames = [...apiResponse.data.results].map((game) => ({
+    const apiGames = [...apiResponse1.data.results, ...apiResponse2.data.results, ...apiResponse3.data.results, ...apiResponse4.data.results].map((game) => ({
       id: game.id,
       name: game.name,
       description: game.description,

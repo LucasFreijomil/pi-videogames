@@ -23,18 +23,35 @@
     font-weight: bold;
     background-color: #ff220000;
     border: 1px solid transparent;
-    transition: border-bottom 0.35s, color 0.35s;
+    transition: color 0.35s;
+    margin-left: -130px;
 }
 
 .navButton:hover {
-    border-bottom: 1px solid #ffffff;
+    color: #7d7d7d;
 }
 
 .searchBar{
     height: 30px;
     width: 300px;
-    background-color: #00dbdb00;
-    border: transparent;
-    border-bottom: 1px solid white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
     color: #ffffff;
+    outline: none;
+}
+
+.navSearchButton{
+    font-weight: bolder;
+    margin-left: -25px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: color 0.35s;
+    font-size: 20px;
+}
+
+.navSearchButton:hover{
+    color: #7d7d7d;
+
 }

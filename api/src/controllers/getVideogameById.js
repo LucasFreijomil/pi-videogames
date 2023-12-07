@@ -42,7 +42,7 @@ const getVideogameById = async (req, res) => {
           platforms: apiGame.platforms.map(
             (platform) => platform.platform.name
           ),
-          image: apiGame.background_image,
+          image: apiGame.background_image_additional,
           released: apiGame.released,
           rating: apiGame.rating,
           genres: apiGame.genres.map((genre) => genre.name),

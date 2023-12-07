@@ -19,8 +19,6 @@ const getGamesByName = async (req, res) => {
       include: Genres,
     });
 
-    console.log(dbGames)
-
     const apiResponse = await axios.get(URL + name + `&key=` + API_KEY);
 
     const apiGames = apiResponse.data.results;
@@ -48,8 +46,11 @@ const getGamesByName = async (req, res) => {
       })),
     ];
 
+    if (mergedGames.length === 0) {
+      return res.status(404).json({ mensaje: 'No se encontraron juegos.' });
+    }
+
     const first15Results = mergedGames.slice(0, 15);
-    console.log(dbGames)
     res.json(first15Results);
   } catch (error) {
     console.error('Error geting games by name', error);

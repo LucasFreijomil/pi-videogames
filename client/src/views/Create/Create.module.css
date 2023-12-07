@@ -1,80 +1,97 @@
 .form {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.258);
-    border-radius: 10px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 30px;
-    color: #ffffff;
-  }
-  
-  .form input {
-    color: #000000;
-    width: 100%;
-  }
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.449);
+  border-radius: 10px;
+  height: 100vh;
+}
 
-  .form select {
-    width: 104%;
-  }
-  
-  /* .form button {
-    display: inline-block;
-    background-color: #ff2400;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    width: 215px;
-    margin-bottom: 10px;
-  } */
-  
-  .form button:hover {
-    background-color: #d62800;
-  }
-  
-  .form button:active {
-    background-color: #ff3b1a;
-  }
+.form h2 {
+  color: rgb(220, 218, 218);
+}
 
-  .selectedGenre {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-top: 0.5px solid #888888;
-    border-left: 0.5px solid #888888;
+.form select {
+  width: 300px;
+  height: 30px;
+  background-color: rgba(73, 73, 73, 0);
+  border: transparent;
+  border-bottom: 1px solid #00dbdb;
+  color: rgb(127, 127, 127);
+  outline: none;
+}
 
-    margin-top: 5px;
-    padding: 3px;
+.form input {
+  height: 30px;
+  width: 300px;
+  background-color: #00dbdb00;
+  border: transparent;
+  border-bottom: 1px solid #00dbdb;
+  color: #ffffff;
+  outline: none;
+}
 
-  }
+.form p {
+  font-size:larger;
+  color: red;
+}
 
-  .selectedGenre button {
-    background-color:transparent;
-    color: #ffffff;
-    border: none;
-  }
+.createButton{
+  margin-top: 50px;
+  width: 300px;
+  border: none;
+  height: 35px;
+  font-size: large;
+  font-weight: 600;
+  background-color: rgb(173, 1, 1);
+  color: white;
+  border-radius: 20px;
+  transition: background-color 0.35s;
+}
 
-  .createButton {
-    display: inline-block;
-    background-color: #ff2400;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    width: 215px;
-    margin-bottom: 10px;
-  }
+.createButton:hover{
+  background-color: rgb(104, 0, 0);
+}
 
-  .dateSelector {
-    background-color: #ffffff;
-    border: none;
-    color: #d62800;
-    height: 25px;
-  }
+.selectedGenre{
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ffffff28;
+  margin-bottom: 5px;
+  font-size: large;
+  border-radius: 3px;
+}
+
+.selectedGenre button {
+  background-color: rgba(255, 0, 0, 0.339);
+  color: #ffffff;
+  border: transparent;
+  transition: background-color 0.35s;
+  border-radius: 3px;
+}
+
+.selectedGenre button:hover {
+  background-color: rgba(255, 0, 0, 0.748);
+}
+
+.addPlatformButton {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 900;
+  margin-left: -35px;
+  transition: color 0.35s;
+  height: 30px;
+}
+
+.addPlatformButton:hover {
+  color: rgb(136, 136, 136);
+}
+
+.dateSelector::-webkit-calendar-picker-indicator{
+  filter: invert();
+  font-size: 17px
+}

@@ -1,26 +1,24 @@
 .card {
-    margin: 20px;
-    width: 220px;
-    height: 300px;
-    background: #1a1a1a;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    width: 270px;
+    height: 270px;
+    background: #1a1a1a;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
     border: 1px solid #515151;
   }
 
-  .card h3{
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-    
+  .card h3 {
+    margin-right: 10px;
+    margin-left: 10px;
   }
 
-  .card h4 {
-    display: flex;
-    justify-content: center;
+  .card p {
+    margin: 10px;
+    margin-top: 0px;
   }
   
   .card:hover {
@@ -28,8 +26,9 @@
   }
   
   .cardImage {
-    height: 60%;
-    object-fit: cover;
+    height: 50%;
+    width: 100%;
+    object-fit:cover;
     border-bottom: 2px solid #ff2400;
   }
   
