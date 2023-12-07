@@ -72,7 +72,7 @@ const gamesReducer = (state = initialState, action) => {
       const backupCopy = [...state.gamesBackup];
       if (selectedGenre !== "default") {
         const filteredByGenre = backupCopy.filter((game) =>
-          game.genres.some((element) => element.name === selectedGenre)
+          game.genres.some((element) => element === selectedGenre)
         );
         return {
           ...state,

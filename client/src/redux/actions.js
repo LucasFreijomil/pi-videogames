@@ -15,10 +15,10 @@ const {
 export const getAllGames = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`https://api.rawg.io/api/games?key=61678cf233004c44998e60ade3390be6&page_size=40`);
+      const { data } = await axios(`http://localhost:3001/videogames`);
       return dispatch({
         type: GET_GAMES,
-        payload: data.results,
+        payload: data,
       });
     } catch (error) {
       console.log(error);
@@ -30,11 +30,11 @@ export const getGameByName = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `https://api.rawg.io/api/games?search=${name}&key=61678cf233004c44998e60ade3390be6&page_size=40`
+        `http://localhost:3001/videogames/name/${name}`
       );
       return dispatch({
         type: GET_GAME_NAME,
-        payload: data.results,
+        payload: data,
       });
     } catch (error) {
       console.log(error);
@@ -46,7 +46,7 @@ export const getGameId = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `https://api.rawg.io/api/games/${id}?key=61678cf233004c44998e60ade3390be6`
+        `http://localhost:3001/videogames/${id}`
       );
       return dispatch({
         type: GET_GAME_ID,
@@ -62,11 +62,11 @@ export const getAllGenres = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `https://api.rawg.io/api/genres?key=61678cf233004c44998e60ade3390be6`
+        `http://localhost:3001/genres`
       );
       return dispatch({
         type: GET_GENRES,
-        payload: data.results,
+        payload: data,
       });
     } catch (error) {
       console.log(error);
