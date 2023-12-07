@@ -8,14 +8,16 @@ const {
   FILTER_GENRES,
   ORDER_ALFABETIC,
   ORDER_RATING,
-  EMPTY_SELECTED_GAME
+  EMPTY_SELECTED_GAME,
 } = TYPES;
 
 const initialState = {
   games: [],
-  gamesBackup: [], //
+  allApiGames: [],
+  allDbGames: [],
   genres: [],
   selectedGame: [],
+  selectedOrigin: "",
 };
 
 const gamesReducer = (state = initialState, action) => {
@@ -23,8 +25,9 @@ const gamesReducer = (state = initialState, action) => {
     case GET_GAMES:
       return {
         ...state,
-        games: action.payload,
-        gamesBackup: action.payload,
+        games: action.payload.gamesFromAPI.concat(action.payload.gamesFromDB),
+        allApiGames: action.payload.gamesFromAPI,
+        allDbGames: action.payload.gamesFromDB,
       };
 
     case GET_GAME_ID:
@@ -37,7 +40,6 @@ const gamesReducer = (state = initialState, action) => {
       return {
         ...state,
         games: action.payload,
-        gamesBackup: action.payload,
       };
 
     case GET_GENRES:
@@ -47,44 +49,47 @@ const gamesReducer = (state = initialState, action) => {
       };
 
     case FILTER_API_DB:
-      const uuidRegex =
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
       if (action.payload === "api") {
-        const apiGames = state.gamesBackup.filter((element) => !uuidRegex.test(element.id));
         return {
           ...state,
-          games: apiGames,
+          games: state.allApiGames,
+          selectedOrigin: "API",
         };
       } else if (action.payload === "db") {
-        const dbGames = state.gamesBackup.filter((element) => uuidRegex.test(element.id));
         return {
           ...state,
-          games: dbGames,
+          games: state.allDbGames,
+          selectedOrigin: "DB",
         };
       } else {
         return {
           ...state,
-          games: state.gamesBackup
-        }
+          games: state.allApiGames.concat(state.allDbGames),
+        };
       }
 
     case FILTER_GENRES:
       const selectedGenre = action.payload;
-      const backupCopy = state.gamesBackup;
+      let filteredByGenre = [];
+      if (state.selectedOrigin === "API") {
+        filteredByGenre = state.allApiGames;
+      } else if (state.selectedOrigin === "DB") {
+        filteredByGenre = state.allDbGames;
+      } else {
+        filteredByGenre = state.allApiGames.concat(state.allDbGames);
+      }
+
       if (selectedGenre !== "default") {
-        const filteredByGenre = backupCopy.filter((game) =>
+        filteredByGenre = filteredByGenre.filter((game) =>
           game.genres.some((element) => element === selectedGenre)
         );
-        return {
-          ...state,
-          gamesBackup: state.gamesBackup,
-          games: filteredByGenre
-        };
-      } else
-        return {
-          ...state,
-          games: backupCopy,
-        };
+      }
+
+      return {
+        ...state,
+        games: filteredByGenre,
+      };
+
 
     case ORDER_ALFABETIC:
       const gamesCopy = [...state.games];
@@ -110,12 +115,12 @@ const gamesReducer = (state = initialState, action) => {
             : gamesCopy2,
       };
 
-    case EMPTY_SELECTED_GAME:  
-      return{
+    case EMPTY_SELECTED_GAME:
+      return {
         ...state,
-        selectedGame: action.payload
-      }
-    
+        selectedGame: action.payload,
+      };
+
     default:
       return { ...state };
   }
