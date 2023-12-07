@@ -18,63 +18,69 @@ const Home = () => {
     state.genres.sort((a, b) => a.name.localeCompare(b.name))
   );
 
+  const allApiGames = useSelector((state) => state.allApiGames);
+
   const { gamesArray, nextHandler, prevHandler, count } = usePagination();
 
   const { handleApiDb, handleGender, handleAlfabeticAndRating } =
     useFilterHandlers();
 
   useEffect(() => {
-    dispatch(getAllGames());
-
-    dispatch(getAllGenres());
-
+    !gamesArray.length && dispatch(getAllGames());
+    !genres.length && dispatch(getAllGenres());
     dispatch(emptySelectedGame());
   }, []);
 
   return (
-    <div>
-      <div className={Styles.filters}>
-        <select onChange={handleAlfabeticAndRating}>
-          <option value="default">Sort By...</option>
-          <option value="AZ">A-Z</option>
-          <option value="ZA">Z-A</option>
-          <option value="asc">Highest Rating First</option>
-          <option value="desc">Lowest Rating First</option>
-        </select>
+    <>
+      {allApiGames.length ? (
+        <div>
+          <div className={Styles.filters}>
+            <select onChange={handleAlfabeticAndRating}>
+              <option value="default">Sort By...</option>
+              <option value="AZ">A-Z</option>
+              <option value="ZA">Z-A</option>
+              <option value="asc">Highest Rating First</option>
+              <option value="desc">Lowest Rating First</option>
+            </select>
 
-        <select onChange={handleApiDb}>
-          <option value="default">Show All (API/DB)</option>
-          <option value="api">API</option>
-          <option value="db">DB</option>
-        </select>
+            <select onChange={handleApiDb}>
+              <option value="default">Show All (API/DB)</option>
+              <option value="api">API</option>
+              <option value="db">DB</option>
+            </select>
 
-        <select onChange={handleGender}>
-          <option value="default">All Genres</option>
-          {genres.map((genre, index) => (
-            <option key={index} value={genre.name}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
-      </div>
+            <select onChange={handleGender}>
+              <option value="default">All Genres</option>
+              {genres.map((genre, index) => (
+                <option key={index} value={genre.name}>
+                  {genre.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <div className={Styles.CardList}>
-        {gamesArray.map((game) => (
-          <GameCard
-            key={game.id}
-            id={game.id}
-            name={game.name}
-            background_image={game.image}
-            genres={game.genres.map((genre) => genre)}
+          <div className={Styles.CardList}>
+            {gamesArray.map((game) => (
+              <GameCard
+                key={game.id}
+                id={game.id}
+                name={game.name}
+                background_image={game.image}
+                genres={game.genres.map((genre) => genre)}
+              />
+            ))}
+          </div>
+          <Pagination
+            nextHandler={nextHandler}
+            prevHandler={prevHandler}
+            count={count}
           />
-        ))}
-      </div>
-      <Pagination
-        nextHandler={nextHandler}
-        prevHandler={prevHandler}
-        count={count}
-      />
-    </div>
+        </div>
+      ) : (
+        <h1 className={Styles.loading}>Loading...</h1>
+      )}
+    </>
   );
 };
 

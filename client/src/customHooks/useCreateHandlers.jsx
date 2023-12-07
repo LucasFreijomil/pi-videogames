@@ -29,14 +29,6 @@ const useCreateHandlers = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(
-      "Estado actual del formulario:",
-      form,
-      platforms,
-      releaseDate,
-      rating,
-      selectedGenres.genres
-    );
     if (
       !form.name ||
       selectedGenres.genres.length === 0 ||
@@ -133,7 +125,7 @@ const useCreateHandlers = () => {
     handleRemovePlatform,
     handleRatingChange,
     setPlatformInput,
-    errors
+    errors,
   };
 };
 

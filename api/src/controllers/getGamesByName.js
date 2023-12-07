@@ -1,19 +1,17 @@
-const axios = require('axios');
+const axios = require("axios");
 const URL = "https://api.rawg.io/api/games?search=";
 const { Videogame, Genres } = require("../db");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 const API_KEY = process.env.DB_API_KEY;
-
 
 const getGamesByName = async (req, res) => {
   const { name } = req.params;
 
   try {
-   
     const dbGames = await Videogame.findAll({
       where: {
         name: {
-          [Op.iLike]: `%${name}%`, 
+          [Op.iLike]: `%${name}%`,
         },
       },
       include: Genres,
@@ -32,7 +30,7 @@ const getGamesByName = async (req, res) => {
         image: dbGame.image,
         released: dbGame.released,
         rating: dbGame.rating,
-        genres: dbGame.Genres.map((genre) => genre.name)
+        genres: dbGame.Genres.map((genre) => genre.name),
       })),
       ...apiGames.map((apiGame) => ({
         id: apiGame.id,
@@ -47,14 +45,14 @@ const getGamesByName = async (req, res) => {
     ];
 
     if (mergedGames.length === 0) {
-      return res.status(404).json({ mensaje: 'No se encontraron juegos.' });
+      return res.status(404).json({ mensaje: "Games not found" });
     }
 
     const first15Results = mergedGames.slice(0, 15);
     res.json(first15Results);
   } catch (error) {
-    console.error('Error geting games by name', error);
-    res.status(500).json({ mensaje: 'Error geting games by name' });
+    console.error("Error geting games by name", error);
+    res.status(500).json({ mensaje: "Error geting games by name" });
   }
 };
 

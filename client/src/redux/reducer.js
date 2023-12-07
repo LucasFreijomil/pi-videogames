@@ -71,6 +71,7 @@ const gamesReducer = (state = initialState, action) => {
     case FILTER_GENRES:
       const selectedGenre = action.payload;
       let filteredByGenre = [];
+
       if (state.selectedOrigin === "API") {
         filteredByGenre = state.allApiGames;
       } else if (state.selectedOrigin === "DB") {
@@ -89,7 +90,6 @@ const gamesReducer = (state = initialState, action) => {
         ...state,
         games: filteredByGenre,
       };
-
 
     case ORDER_ALFABETIC:
       const gamesCopy = [...state.games];

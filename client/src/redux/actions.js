@@ -10,7 +10,7 @@ const {
   FILTER_GENRES,
   ORDER_ALFABETIC,
   ORDER_RATING,
-  EMPTY_SELECTED_GAME
+  EMPTY_SELECTED_GAME,
 } = TYPES;
 
 export const getAllGames = () => {
@@ -46,9 +46,7 @@ export const getGameByName = (name) => {
 export const getGameId = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        `http://localhost:3001/videogames/${id}`
-      );
+      const { data } = await axios(`http://localhost:3001/videogames/${id}`);
       return dispatch({
         type: GET_GAME_ID,
         payload: data,
@@ -62,9 +60,7 @@ export const getGameId = (id) => {
 export const getAllGenres = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        `http://localhost:3001/genres`
-      );
+      const { data } = await axios(`http://localhost:3001/genres`);
       return dispatch({
         type: GET_GENRES,
         payload: data,
@@ -106,7 +102,6 @@ export const orderRating = (order) => {
 export const emptySelectedGame = () => {
   return {
     type: EMPTY_SELECTED_GAME,
-    payload: []
-  }
-}
-
+    payload: [],
+  };
+};

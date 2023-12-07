@@ -13,14 +13,15 @@ const Pagination = ({ nextHandler, prevHandler, count }) => {
   return (
     <div className={Styles.pagination}>
       {count > 1 && (
-        <button
-          onClick={prevHandler}
-          className={Styles.paginButtons}
-        >
+        <button onClick={prevHandler} className={Styles.paginButtons}>
           <MdKeyboardDoubleArrowLeft /> Prev
         </button>
       )}
-      <h1>{count} / {totalPages}</h1>
+      {totalPages > 0 && (
+        <h1>
+          {count} / {totalPages}
+        </h1>
+      )}
       {count < totalPages && (
         <button onClick={nextHandler} className={Styles.paginButtons}>
           Next <MdKeyboardDoubleArrowRight />

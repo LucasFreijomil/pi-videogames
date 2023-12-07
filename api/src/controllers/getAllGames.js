@@ -5,27 +5,26 @@ const API_KEY = process.env.DB_API_KEY;
 
 const getAllGames = async (req, res) => {
   try {
-     
-    let gamesFromAPI = []
+    let gamesFromAPI = [];
 
-    const apiResponse1 = (
-      await axios.get(`${URL}?page_size=25&page=1&key=${API_KEY}`)
+    const apiResponse1 = await axios.get(
+      `${URL}?page_size=25&page=1&key=${API_KEY}`
     );
-    gamesFromAPI = gamesFromAPI.concat(apiResponse1.data.results)
-    const apiResponse2 = (
-      await axios.get(`${URL}?page_size=25&page=2&key=${API_KEY}`)
+    gamesFromAPI = gamesFromAPI.concat(apiResponse1.data.results);
+    const apiResponse2 = await axios.get(
+      `${URL}?page_size=25&page=2&key=${API_KEY}`
     );
-    gamesFromAPI = gamesFromAPI.concat(apiResponse2.data.results)
+    gamesFromAPI = gamesFromAPI.concat(apiResponse2.data.results);
 
-    const apiResponse3 = (
-      await axios.get(`${URL}?page_size=25&page=3&key=${API_KEY}`)
+    const apiResponse3 = await axios.get(
+      `${URL}?page_size=25&page=3&key=${API_KEY}`
     );
-    gamesFromAPI = gamesFromAPI.concat(apiResponse3.data.results)
+    gamesFromAPI = gamesFromAPI.concat(apiResponse3.data.results);
 
-    const apiResponse4 = (
-      await axios.get(`${URL}?page_size=25&page=4&key=${API_KEY}`)
+    const apiResponse4 = await axios.get(
+      `${URL}?page_size=25&page=4&key=${API_KEY}`
     );
-    gamesFromAPI = gamesFromAPI.concat(apiResponse4.data.results)
+    gamesFromAPI = gamesFromAPI.concat(apiResponse4.data.results);
 
     const dbGames = await Videogame.findAll({
       include: Genres,
@@ -40,7 +39,7 @@ const getAllGames = async (req, res) => {
       released: game.released,
       rating: game.rating,
       genres: game.Genres.map((genre) => genre.name),
-    }))
+    }));
 
     const apiGames = gamesFromAPI.map((game) => ({
       id: game.id,
@@ -55,7 +54,7 @@ const getAllGames = async (req, res) => {
 
     const allGames = {
       gamesFromAPI: apiGames,
-      gamesFromDB: dbGamesMapped
+      gamesFromDB: dbGamesMapped,
     };
     res.json(allGames);
   } catch (error) {

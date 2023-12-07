@@ -27,7 +27,7 @@ const Create = () => {
     handleRatingChange,
     setPlatformInput,
     handleFormSubmit,
-    errors
+    errors,
   } = useCreateHandlers();
 
   useEffect(() => {
@@ -38,7 +38,13 @@ const Create = () => {
     <div className={Styles.form}>
       <form onSubmit={handleFormSubmit}>
         <h2>Name</h2>
-        <input type="text" name="name" placeholder="Type the game name..." onChange={handleInputChange} autoComplete="off" />
+        <input
+          type="text"
+          name="name"
+          placeholder="Type the game name..."
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
         <p>{errors.name && <span>{errors.name}</span>}</p>
 
         <h2>Genres</h2>
@@ -68,18 +74,21 @@ const Create = () => {
         </div>
 
         <h2>Platforms</h2>
-        <div >
+        <div>
           <input
             type="text"
             name="platforms"
             autoComplete="off"
             value={platformInput}
             placeholder="Add one or more..."
-            onChange={(e) => setPlatformInput(e.target.value)
-            }
+            onChange={(e) => setPlatformInput(e.target.value)}
           />
-          <button type="button" className={Styles.addPlatformButton} onClick={handleAddPlatform}>
-          <MdAdd />
+          <button
+            type="button"
+            className={Styles.addPlatformButton}
+            onClick={handleAddPlatform}
+          >
+            <MdAdd />
           </button>
         </div>
         <br />
@@ -98,11 +107,23 @@ const Create = () => {
         </div>
 
         <h2>Description</h2>
-        <input type="text" name="description" placeholder="Type a description..." onChange={handleInputChange} autoComplete="off"/>
+        <input
+          type="text"
+          name="description"
+          placeholder="Type a description..."
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
         <br />
 
         <h2>Image</h2>
-        <input type="text" name="image" placeholder="Insert URL..." onChange={handleInputChange} autoComplete="off"/>
+        <input
+          type="text"
+          name="image"
+          placeholder="Insert URL..."
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
         <p>{errors.image && <span>{errors.image}</span>}</p>
 
         <h2>Released</h2>

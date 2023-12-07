@@ -64,9 +64,14 @@ const NavBar = () => {
             value={searchedGame}
             onChange={handleInputChange}
           />
-          {searchedGame && <button className={Styles.navSearchButton} onClick={handleSearchClick}>
-          <IoSearch />
-          </button>}
+          {searchedGame && (
+            <button
+              className={Styles.navSearchButton}
+              onClick={handleSearchClick}
+            >
+              <IoSearch />
+            </button>
+          )}
         </div>
       )}
 
